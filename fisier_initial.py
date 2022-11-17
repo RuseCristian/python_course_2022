@@ -1,1 +1,2 @@
-print("Mesaj")
+print("Mesaj")  # comentariu
+
