@@ -76,6 +76,5 @@ def validare_buletin(cnp):
 
 cod_buletin = input("Introduceti cnp ul")
 
-# print(validare_buletin(cod_buletin))
+print(validare_buletin(cod_buletin))
 
-print(x)
