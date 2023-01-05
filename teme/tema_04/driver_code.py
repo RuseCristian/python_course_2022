@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-from pandas import ExcelWriter
 
 request_page = requests.get("https://frsah.ro/calendar/")
 link = BeautifulSoup(request_page.text, 'html.parser')
@@ -19,7 +18,18 @@ for obj in main:
 
 del dataset[:27]
 header_list = dataset[0]
+del dataset[0]
 
 
 df = pd.DataFrame(dataset, columns=header_list, index=range(1, len(dataset) + 1))
 df.to_excel("CompetitiiSah.xlsx", header=header_list)
+
+
+excel_data = pd.read_excel('CompetitiiSah.xlsx')
+#print the column names
+print(excel_data.columns)
+#get the values for a given column
+values = df['Arm_id'].values
+#get a data frame with selected columns
+FORMAT = ['Arm_id', 'DSPName', 'Pincode']
+df_selected = df[FORMAT]

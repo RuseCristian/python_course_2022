@@ -10,6 +10,16 @@
             <div class="col-md-12">
                 <nav>
                     <a class="btn" href="/admin">Admin</a>
+
+                    {% if request.user.is_authenticated %}
+                        {% if ready_to_work is False %}
+                            <a href="{% url 'pontaj:oprire_pontaj' %}" class="btn btn-danger">Oprire pontaj</a>
+                        {% else %}
+                            <a href="{% url 'pontaj:start_pontaj' %}" class="btn btn-success">Pornire pontaj</a>
+                        {% endif %}
+                        <a class="btn btn-info" href="{% url 'location:lista_locatii' %}">Locatii</a>
+                        <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
                 </nav>
             </div>
         </div>
